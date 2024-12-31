@@ -1,0 +1,93 @@
+﻿@using StoreMVC.Models.Domain
+@model IList<Product>
+
+<a class="button" asp-controller="Product" asp-action="Create">Create Product</a>
+<style>
+
+    .button {
+        display: inline-block;
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #0EC9A4; 
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+        .button:hover {
+            background-color: #009879;
+            transform: translateY(-2px); 
+            text-decoration: none; 
+            color: #ffffff;
+        }
+
+        .button:active {
+            background-color: #009879;
+            transform: translateY(1px); 
+        }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f3f3f3;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    img {
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Manufacturer</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img height="100px" width="100px" src="@item.ImageFileName" /></td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@item.Category</td>
+                <td>@item.Manufacturer</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
